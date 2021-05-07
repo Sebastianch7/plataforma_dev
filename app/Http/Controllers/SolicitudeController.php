@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class SolicitudeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -67,7 +71,7 @@ class SolicitudeController extends Controller
         'idCompany' => auth()->user()->company,
         'idService' => $request->service,
         'idUser' => auth()->user()->id,
-        'idState' => '3',
+        'idState' => '4',
       ]);
       return redirect('/solicitude')->with('status','La solicitud de '.$request->name.' '.$request->lastname.' ha sido registrada.');
     }
@@ -113,7 +117,7 @@ class SolicitudeController extends Controller
          // 
      return view('solicitude.editsolicitude', [
       'solicitude' => $solicitude,
-      'states' => DB::table('states')->get(),
+      'states' => DB::table('states')->whereIn('id',[3,5])->orderby('id','desc')->get(),
     ]);
    }
 
@@ -127,7 +131,7 @@ class SolicitudeController extends Controller
     public function update(Request $request, Solicitude $solicitude)
     {
         $solicitude->update($request->all());
-      return redirect('/solicitude')->with('status','La solicitud ha sido actualizada.');
+        return redirect('/solicitude')->with('status','La solicitud ha sido actualizada.');
     }
 
     /**

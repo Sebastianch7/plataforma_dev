@@ -8,15 +8,15 @@ use Auth;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -25,11 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $perm = DB::table('permission_users')->where('permission_users.idRole','=',auth()->user()->role)->get();
-        // $permission = DB::table('permission_users')->where('permission_users.idRole','=',auth()->user()->role)->get();
-        return view('home',[
-            //'permissions' => Arr::flatten(DB::table('permission_users')->where('permission_users.idRole','=',auth()->user()->role)->get()),
-        ]);
+        return view('home');
         
     }
 }

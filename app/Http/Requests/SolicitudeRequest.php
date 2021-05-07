@@ -35,6 +35,7 @@ class SolicitudeRequest extends FormRequest
             'postulate' => ['required'],
             'departament' => ['required','numeric'],
             'city' => ['required','numeric'],
+            'idState' => ['numeric'],
             'service' => ['required'],
         ];
     }
