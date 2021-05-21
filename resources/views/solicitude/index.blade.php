@@ -58,11 +58,11 @@
               <td class="align-middle">{{ $solicitude->state }}</td>
               <td class="align-middle">{{ $solicitude->service }}</td>
               <!-- Estado 3 es igual a solicitado, unico que permite modificar la información o cancelar -->
-              @if($solicitude->idState == 4 && ( auth()->user()->role == 2 || auth()->user()->role == 5))
+              @if($solicitude->idState == 4 && (auth()->user()->role == 1 || auth()->user()->role == 2 || auth()->user()->role == 5))
               <td>
                 <a href="{{ route('solicitude.edit', $solicitude->id) }}" class="btn btn-primary">Editar</a>
               </td>
-              @elseif($solicitude->idState == 4 && (auth()->user()->role == 2 || auth()->user()->role == 3))
+              @elseif($solicitude->idState == 4 && (auth()->user()->role == 1 || auth()->user()->role == 2 || auth()->user()->role == 3))
               <td>
                 <a href="{{ route('solicitude.editsolicitude', $solicitude->id) }}" class="btn btn-primary">Asignar</a>
               </td>

@@ -6,6 +6,7 @@ use App\Role;
 use App\Http\Requests\RoleRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class RoleController extends Controller
 {
@@ -18,13 +19,42 @@ class RoleController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
+
+  public function validation()
+  {
+    if(auth()->user()->state == 1)
+    {
+      return true;      
+    }
+    else
+    {
+      return false;
+    }
+  }
+
   public function index()
   {
-    return view('role.index',
-      [
-        'roles' => DB::table('roles')->where('id','>','1')->paginate(10),
-        'cant' => DB::table('roles')->where('id','>','1')->count(),
-      ]);
+    if($this->validation())
+    {
+      // $permission = DB::table('permission_users')->where('idRole','=',auth()->user()->role)->get();
+      // if(property_exists('permiso', $permission))
+      // {
+        return view('role.index',
+        [
+          'roles' => DB::table('roles')->where('id','>','1')->paginate(10),
+          'cant' => DB::table('roles')->where('id','>','1')->count(),
+        ]);
+      }
+    //   else
+    //   {
+    //     return view('/home');   
+    //   }
+    // }
+    else 
+    {
+      Auth::logout();
+      return redirect('/login');
+    }
   }
 
   /**

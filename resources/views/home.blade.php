@@ -11,8 +11,6 @@
           ['Cliente 1',  265],
           ['Cliente 2',  35],
           ['Cliente 3',  557],
-          ['Cliente 4',  139],
-          ['Cliente 5',  236]
           ]);
 
         var options = {
@@ -32,12 +30,15 @@
         var data = google.visualization.arrayToDataTable([
           ['role', 'cantidad'],
           ['Admin',  2,],
-          ['Analista',  13],
+          ['Analista de información',  13],
+          ['Analista de campo',  7],
+          ['Analista de verificación',  5],
+          ['Clientes',  21],
           
           ]);
 
         var options = {
-          title : 'Solicitudes por cliente',
+          title : 'Usuarios activos',
           vAxis: {title: 'otro'},
           hAxis: {title: 'Otro'},
           seriesType: 'bars',
@@ -48,27 +49,6 @@
         chart.draw(data, options);
       }
 
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
-
-        var options = {
-          title: 'My Daily Activities',
-          is3D: false,
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
-      }
-
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawVisualization);
 
@@ -76,13 +56,13 @@
         // Some raw data (not necessarily accurate)
         var data = google.visualization.arrayToDataTable([
           [ 'Company','Pendiente', 'En progreso', 'Finalizadas'],
-          [ 'cliente 1', 1,      2,         5,],
-          [ 'cliente 2', 1,      2,         5,],
-          [ 'cliente 3', 1,      2,         5,],
+          [ 'Colpensiones', 1,      12,         21,],
+          [ 'Adecco', 3,      1,         15,],
+          [ 'Ejercito', 7,      8,         19,],
         ]);
 
         var options = {
-          title : 'Seguimiento usuarios',
+          title : 'Seguimiento de solicitudes',
           seriesType: 'bars',
           series: {5: {type: 'line'}}
         };
@@ -114,7 +94,7 @@
     	<!-- <div class="card col-lg-6 col-md-12 mb-2">
     		<div id="piechart"></div>
     	</div> -->
-      <div class="card col-lg-6 col-md-12 mb-2">
+      <div class="card col-lg-12 col-md-12 mb-2">
         <div id="usuarios"></div>
       </div>
     </div>
