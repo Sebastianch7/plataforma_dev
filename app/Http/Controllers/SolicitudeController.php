@@ -113,11 +113,13 @@ class SolicitudeController extends Controller
 
     public function editsolicitude($solicitude)
    {
+
      $solicitude = Solicitude::find($solicitude);
          // 
      return view('solicitude.editsolicitude', [
       'solicitude' => $solicitude,
       'states' => DB::table('states')->whereIn('id',[3,5])->orderby('id','desc')->get(),
+      'users' => DB::table('users')->whereIn('role',[4,5])->orderby('id','desc')->get(),
     ]);
    }
 

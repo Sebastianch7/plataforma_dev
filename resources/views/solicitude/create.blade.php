@@ -17,7 +17,6 @@
         @endif
         <form action="{{ route('solicitude.store' ) }}" method="POST">
           <div class="form-row">
-            <p>A continuación ingrese los datos del candidato.</p>
             <div class="form-group col-lg-6 col-md-12 col-sm-12">
               <label for="name">Nombres*</label>
               <input type="text" class="form-control" name="name" value="{{ old('name') }}">

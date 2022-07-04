@@ -8,9 +8,9 @@ use Faker\Generator as Faker;
 $factory->define(Company::class, function (Faker $faker) {
     return [
     		'id' => '1',
-        'name'=>'Professional Outsorcing Services',
-				'phone'=>'5714818',
-				'address'=>'Cra 31 a No 25b70',
+        'name'=>'Servicios Integrales en Riesgo Corporativo S.A.S',
+				'phone'=>'3212840845',
+				'address'=>'Bogotà',
 				'state'=>'1',
     ];
 });

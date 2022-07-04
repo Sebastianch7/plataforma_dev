@@ -63,6 +63,14 @@
                 @endforeach
               </select>
             </div>
+            <div class="form-group col-md-6">
+              <label for="idUser">Analista asignado*</label>
+              <select type="text" class="form-control" name="idUser">
+                @foreach($users as $user)
+                  <option value="{{ $user->id }}">{{ $user->name }}{{ $user->lastname }}</option>
+                @endforeach
+              </select>
+            </div>
           </div>
           @csrf
           @method('PUT')

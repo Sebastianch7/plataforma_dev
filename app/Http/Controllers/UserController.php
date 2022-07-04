@@ -12,9 +12,9 @@ use Auth;
 class UserController extends Controller
 {
  public function __construct()
- {
-  $this->middleware('auth');
-}
+  {
+    $this->middleware('auth');
+  }
     /**
      * Display a listing of the resource.
      *
@@ -117,7 +117,7 @@ class UserController extends Controller
          // 
      return view('user.edituser', [
       'users' => $user,
-      'states' => DB::table('states')->get(),
+      'states' => DB::table('states')->whereBetween('id',[1,2])->get(),
     ]);
    }
 

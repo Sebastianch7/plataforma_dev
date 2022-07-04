@@ -103,7 +103,7 @@
         <span class="mr-2 d-none d-lg-inline text-gray-600 small">
           @if(auth()->check())
           {{ Auth::user()->email }}
-          @endif</span>
+        @endif</span>
         <i class="fas fa-user-circle fa-fw"></i>
       </a>
       <!-- Dropdown - User Information -->

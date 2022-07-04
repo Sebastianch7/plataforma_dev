@@ -34,13 +34,13 @@ class CreateSolicitudesTable extends Migration
             
             $table->timestamps();
 
-            $table->foreign('idUser')->references('id')->on('users');
+            /*$table->foreign('idUser')->references('id')->on('users');
             $table->foreign('idCompany')->references('id')->on('companies');
             $table->foreign('idService')->references('id')->on('services');
             $table->foreign('idState')->references('id')->on('states');
             $table->foreign('idTypeDocument')->references('id')->on('typeDocument');
             $table->foreign('idDepartament')->references('id')->on('departaments');
-            $table->foreign('idCity')->references('id')->on('cities');
+            $table->foreign('idCity')->references('id')->on('cities');*/
         });
     }
 
