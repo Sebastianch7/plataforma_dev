@@ -38,7 +38,7 @@
               <th>Estado</th>
               <th>Servicio</th>
               <!-- <th>password</th> -->
-              <th>acción</th>
+              <th colspan="5">acción</th>
             </tr>
           </thead>
           <tbody>
@@ -62,23 +62,28 @@
               <td>
                 <a href="{{ route('solicitude.edit', $solicitude->id) }}" class="btn btn-primary">Editar</a>
               </td>
-              @elseif($solicitude->idState == 4 && (auth()->user()->role == 1 || auth()->user()->role == 2 || auth()->user()->role == 3))
+              @endif
+              @if($solicitude->idState == 4 && (auth()->user()->role == 1 || auth()->user()->role == 2 || auth()->user()->role == 3))
               <td>
                 <a href="{{ route('solicitude.editsolicitude', $solicitude->id) }}" class="btn btn-primary">Asignar</a>
               </td>
-              @elseif($solicitude->idState == 5  && (auth()->user()->role == 1 || auth()->user()->role == 2 || auth()->user()->role == 4))
+              @endif
+              @if($solicitude->idState == 5  && (auth()->user()->role == 1 || auth()->user()->role == 2 || auth()->user()->role == 4))
+              <td>
+                <a href="{{ route('visitadomiciliaria.index', $solicitude->id) }}" class="btn btn-primary">Gestionar</a>
+              </td>
+              @endif
+              @if($solicitude->idState == 6  && (auth()->user()->role == 1 || auth()->user()->role == 2 || auth()->user()->role == 4))
               <td>
                 <a href="{{ route('solicitude.editsolicitude', $solicitude->id) }}" class="btn btn-primary">Gestionar</a>
               </td>
-              @elseif($solicitude->idState == 6  && (auth()->user()->role == 1 || auth()->user()->role == 2 || auth()->user()->role == 4))
-              <td>
-                <a href="{{ route('solicitude.editsolicitude', $solicitude->id) }}" class="btn btn-primary">Gestionar</a>
-              </td>
-              @elseif($solicitude->idState == 7  && (auth()->user()->role == 1 || auth()->user()->role == 2 || auth()->user()->role == 3))
+              @endif
+              @if($solicitude->idState == 7  && (auth()->user()->role == 1 || auth()->user()->role == 2 || auth()->user()->role == 3))
               <td>
                 <a href="{{ route('solicitude.editsolicitude', $solicitude->id) }}" class="btn btn-primary">Verificar</a>
               </td>
-              @elseif($solicitude->idState == 8)
+              @endif
+              @if($solicitude->idState == 8)
               <td>
                 <a href="" class="btn btn-success">Descargar informe</a>
               </td>

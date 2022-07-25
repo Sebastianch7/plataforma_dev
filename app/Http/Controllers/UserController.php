@@ -6,15 +6,17 @@ use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\createUser;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
  public function __construct()
- {
-  $this->middleware('auth');
-}
+  {
+    $this->middleware('auth');
+  }
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +43,7 @@ class UserController extends Controller
     {
       return view('user.create',[
         'companies' => DB::table('companies')->get(),
-        'roles' => DB::table('roles')->where('id','>','2')->get(),
+        'roles' => DB::table('roles')->where('id','>','1')->get(),
       ]);
     }
 
@@ -53,21 +55,31 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+      $validacion =  DB::table('users')->where('id','=',$request->idNumber)->get();
 
-      $password = $request->name.$request->company;
-      user::create([
-        'idNumber' => $request->idNumber,
-        'name' => $request->name,
-        'lastname' => $request->lastname,
-        'email' => $request->email,
-        'phone' => $request->phone,
-        'company' => $request->company,
-        'role'  => $request->role,
-        'state' => '1',
-        'email_verified_at' => now(),
-        'password' => bcrypt($password),
-      ]);
-      return redirect('/user')->with('status','El registro de '.$request->name.' '.$request->lastname.' ha sido creado.');
+      Mail::to($request->email)->send(new createUser($request));
+
+      /*
+      if(!$validacion){
+        user::create([
+          'idNumber' => $request->idNumber,
+          'name' => $request->name,
+          'lastname' => $request->lastname,
+          'email' => $request->email,
+          'phone' => $request->phone,
+          'company' => $request->company,
+          'role'  => $request->role,
+          'state' => '1',
+          'email_verified_at' => now(),
+          'password' => bcrypt($request->idNumber),
+        ]);
+  
+        return redirect('/user')->with('status','El registro de '.$request->name.' '.$request->lastname.' ha sido creado.');
+      }
+      else{
+        return redirect('/user')->with('status',''.$request->name.' '.$request->lastname.' ya se encuentra registrado.');
+      }
+      */
     }
 
     /**
@@ -117,7 +129,7 @@ class UserController extends Controller
          // 
      return view('user.edituser', [
       'users' => $user,
-      'states' => DB::table('states')->get(),
+      'states' => DB::table('states')->whereBetween('id',[1,2])->get(),
     ]);
    }
 

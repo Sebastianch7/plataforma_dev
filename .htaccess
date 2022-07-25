@@ -4,8 +4,8 @@ RewriteEngine on
 
 Options +FollowSymLinks
 
-RewriteCond %{HTTP_HOST} ^www\.posltda\.com\.co$ [NC]
+RewriteCond %{HTTP_HOST} ^www\.websirc\.com\.co$ [NC]
 
-RewriteRule ^(.*)$ http://posltda.com.co/$1 [R=301,L]
+RewriteRule ^(.*)$ http://websirc.com/$1 [R=301,L]
 
-#RedirectMatch 301 ^(.*)$ https://www.posltda.com.co/public
+#RedirectMatch 301 ^(.*)$ https://www.websirc.com/public

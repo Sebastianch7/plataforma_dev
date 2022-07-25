@@ -6,7 +6,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
       <i class="fa fa-cube"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">Postlda</div>
+    <div class="sidebar-brand-text mx-3">SERINPO</div>
   </a>
 
   <!-- Divider -->

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>POSLTDA</title>
+    <title>Servicios Integrales en Riesgo Corporativo S.A.S</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
